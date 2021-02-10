@@ -1,7 +1,11 @@
 import os
 from flask import Flask, send_from_directory
+from app.api import api
 
 app = Flask(__name__, static_folder='public')
+
+# register api
+app.register_blueprint(api, url_prefix="/api")
 
 # Serve React App
 @app.route('/', defaults={'path': ''})
